@@ -4,13 +4,15 @@ using UnityEngine.SceneManagement;
 
 public class jugador : MonoBehaviour
 {
-    public float velocidad = 5f;
+    public float velocidad = 3f;
     private float movimientoX;
 
     public float fuerzaSalto = 4f;
     private bool enSuelo = false;
     private Rigidbody2D rb;
 
+    public AudioSource audioSource;
+    public AudioClip getcoin;
     void OnMove(InputValue input)
     {
         movimientoX = input.Get<Vector2>().x;
@@ -51,6 +53,17 @@ public class jugador : MonoBehaviour
         if (collision.gameObject.CompareTag("suelo"))
         {
             enSuelo = false;
+        }
+    }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("moneda")) {
+            audioSource.PlayOneShot(getcoin);
+            FindAnyObjectByType<GameManager>().sumarPuntos();
+            Destroy(collision.gameObject);
+        }
+        if (collision.gameObject.CompareTag("enemigo")){
+            FindAnyObjectByType<GameManager>().restarVida();
         }
     }
 }
