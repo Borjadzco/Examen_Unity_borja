@@ -23,7 +23,7 @@ public class GameManager : MonoBehaviour
     {
         puntos++;
 
-        textoPuntos.text = "monedas: " + puntos;
+        textoPuntos.text = puntos + "/" + "10";
 
     }
     public void restarVida() {

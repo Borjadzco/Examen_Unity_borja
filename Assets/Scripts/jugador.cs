@@ -7,7 +7,7 @@ public class jugador : MonoBehaviour
     public float velocidad = 3f;
     private float movimientoX;
 
-    public float fuerzaSalto = 4f;
+    public float fuerzaSalto = 6f;
     private bool enSuelo = false;
     private Rigidbody2D rb;
 
@@ -65,5 +65,11 @@ public class jugador : MonoBehaviour
         if (collision.gameObject.CompareTag("enemigo")){
             FindAnyObjectByType<GameManager>().restarVida();
         }
+        if (collision.gameObject.CompareTag("victoria")) {
+            ganar();
+        }
+    }
+    void ganar() {
+        SceneManager.LoadScene("victoria");
     }
 }
