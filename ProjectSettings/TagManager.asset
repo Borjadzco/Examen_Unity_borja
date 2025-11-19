@@ -5,6 +5,9 @@ TagManager:
   serializedVersion: 3
   tags:
   - moneda
+  - enemigo
+  - suelo
+  - jugador
   layers:
   - Default
   - TransparentFX
